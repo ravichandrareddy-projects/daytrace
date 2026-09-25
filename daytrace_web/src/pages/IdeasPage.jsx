@@ -161,8 +161,8 @@ export default function IdeasPage() {
       )}
 
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-        <div className="h-16 px-gutter-mobile flex items-center justify-between max-w-md mx-auto">
+      <header className="sticky top-0 z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div className="h-16 px-gutter-mobile md:px-10 flex items-center justify-between">
           <div className="flex items-center gap-space-sm min-w-0">
             <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm shrink-0 flex items-center justify-center bg-white/70 border border-slate-200/50">
               <img src="/daytrace-logo.png" alt="DayTrace Logo" className="w-full h-full object-cover" />
@@ -218,8 +218,8 @@ export default function IdeasPage() {
       </header>
 
       {/* Main Stream */}
-      <main className="flex-1 w-full max-w-md mx-auto px-gutter-mobile pt-20">
-        <div className="space-y-4">
+      <main className="flex-1 w-full px-gutter-mobile md:px-10 pt-6">
+        <div className="space-y-4 max-w-[1200px] mx-auto">
           
           {/* Top Status & Metrics Grid */}
           <div className="grid grid-cols-4 gap-2 pt-1">

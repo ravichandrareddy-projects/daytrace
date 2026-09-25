@@ -98,8 +98,8 @@ export default function MemoriesPage() {
       )}
 
       {/* Header (Exact from Visual Memory stitch template with functional controls) */}
-      <header className="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-        <div className="h-16 px-gutter-mobile flex items-center justify-between max-w-md mx-auto">
+      <header className="sticky top-0 z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div className="h-16 px-gutter-mobile md:px-10 flex items-center justify-between">
           <div className="flex items-center gap-2 min-w-0">
             <button 
               onClick={() => setActiveTab('more')}
@@ -158,8 +158,8 @@ export default function MemoriesPage() {
       </header>
 
       {/* Main Visual Memory Stream */}
-      <main className="flex flex-col relative w-full pt-16 pb-28 bg-transparent min-h-screen">
-        <div className="flex flex-col w-full max-w-md mx-auto">
+      <main className="flex flex-col relative w-full pt-6 pb-28 bg-transparent min-h-screen">
+        <div className="flex flex-col w-full md:px-10 max-w-[1200px] mx-auto">
           {/* Telemetry & Ambient Header Section */}
           <div className="px-gutter-mobile pt-space-md pb-space-sm flex flex-col gap-space-sm">
             <div className="flex items-center gap-space-xs overflow-x-auto pb-1 no-scrollbar">

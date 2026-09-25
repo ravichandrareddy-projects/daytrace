@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp, getTodayDateKey, formatDisplayDate, shiftDateKey } from '../context/AppContext';
+import DistractionBadge from '../components/Timeline/DistractionBadge';
 
 export default function TodayPage() {
   const { 
@@ -132,9 +133,9 @@ export default function TodayPage() {
         </div>
       )}
 
-      {/* Header (Exact from stitch template with functional controls) */}
-      <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl pt-safe border-b border-slate-200/40 shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
-        <div className="h-16 px-gutter-mobile flex items-center justify-between max-w-md mx-auto">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl pt-safe border-b border-slate-200/40 shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
+        <div className="h-16 px-gutter-mobile md:px-10 flex items-center justify-between">
           <div className="flex items-center gap-space-sm">
             <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm shrink-0 flex items-center justify-center bg-white/70 border border-slate-200/50">
               <img src="/daytrace-logo.png" alt="DayTrace Logo" className="w-full h-full object-cover" />
@@ -188,8 +189,8 @@ export default function TodayPage() {
       </header>
 
       {/* Main Stream Content */}
-      <main className="flex-1 w-full max-w-md mx-auto px-gutter-mobile pt-20">
-        <div className="space-y-space-md">
+      <main className="flex-1 w-full px-gutter-mobile md:px-10 pt-6 pb-20">
+        <div className="space-y-space-md max-w-[1200px] mx-auto">
           {/* Weather & Active Flow Status Bar */}
           <div className="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
             <span className="font-bold text-on-surface uppercase tracking-wide">{displayDate}</span>
@@ -400,6 +401,20 @@ export default function TodayPage() {
                 </button>
               </div>
             </div>
+
+            {/* Distraction Board */}
+            {liveFocus.distractions && liveFocus.distractions.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-slate-200/40">
+                <p className="font-label-sm text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                  Session Distractions Detected
+                </p>
+                <div className="flex flex-col gap-1.5">
+                  {liveFocus.distractions.map((dist) => (
+                    <DistractionBadge key={dist.id} distraction={dist} isAurora={false} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Tomorrow's Planning Cutoff Banner */}

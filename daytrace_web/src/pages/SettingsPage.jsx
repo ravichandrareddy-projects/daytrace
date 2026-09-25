@@ -60,7 +60,7 @@ export default function SettingsPage() {
 
       {/* Header (Exact from More Settings stitch template) */}
       <header className="fixed top-0 w-full z-50 pt-safe bg-[#FAF9FE]/85 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_1px_12px_rgba(15,23,42,0.04)]">
-        <div className="h-16 px-4 flex items-center justify-between gap-2 max-w-md mx-auto">
+        <div className="h-16 px-4 flex items-center justify-between gap-2">
           <div className="flex items-center gap-3 min-w-0 flex-1">
             <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm shrink-0 flex items-center justify-center bg-white/70 border border-slate-200/50">
               <img src="/daytrace-logo.png" alt="DayTrace Logo" className="w-full h-full object-cover" />
@@ -112,7 +112,7 @@ export default function SettingsPage() {
       </header>
 
       {/* Main Settings Content */}
-      <main className="flex flex-col relative w-full pt-16 pb-28 px-4 bg-transparent flex-1 text-slate-900 max-w-md mx-auto">
+      <main className="flex flex-col relative w-full pt-16 pb-28 px-4 bg-transparent flex-1 text-slate-900">
         <div className="flex flex-col w-full gap-4 pb-6 pt-3">
           
           {/* Identity Card with Animated Rainbow Shimmer Perimeter */}

@@ -118,8 +118,8 @@ export default function TimelinePage() {
       )}
 
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-        <div className="h-16 px-gutter-mobile flex items-center justify-between max-w-md mx-auto">
+      <header className="sticky top-0 z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div className="h-16 px-gutter-mobile md:px-10 flex items-center justify-between">
           <div className="flex items-center gap-space-sm min-w-0">
             <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm shrink-0 flex items-center justify-center bg-white/70 border border-slate-200/50">
               <img src="/daytrace-logo.png" alt="DayTrace Logo" className="w-full h-full object-cover" />
@@ -170,8 +170,8 @@ export default function TimelinePage() {
       </header>
 
       {/* Main Stream Content */}
-      <main className="flex flex-col relative w-full pt-20 bg-transparent min-h-screen">
-        <div className="flex flex-col w-full px-gutter-mobile space-y-space-md max-w-md mx-auto">
+      <main className="flex flex-col relative w-full pt-6 bg-transparent min-h-screen">
+        <div className="flex flex-col w-full px-gutter-mobile md:px-10 space-y-space-md max-w-[1200px] mx-auto">
           
           {/* Date Stepper */}
           <section className="flex flex-col w-full space-y-space-sm pt-space-xs">

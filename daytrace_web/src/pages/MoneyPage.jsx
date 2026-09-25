@@ -47,7 +47,7 @@ export default function MoneyPage() {
         </div>
       )}
       {/* App Header (Exact from Money stitch template with functional controls) */}
-      <header className="relative z-10 px-5 pt-6 pb-4 flex items-center justify-between border-b border-indigo-50/70 backdrop-blur-md bg-white/75 sticky top-0 max-w-md mx-auto">
+      <header className="relative z-10 px-5 pt-6 pb-4 flex items-center justify-between border-b border-indigo-50/70 backdrop-blur-md bg-white/75 sticky top-0">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl overflow-hidden shadow-sm shrink-0 flex items-center justify-center bg-white/70 border border-slate-200/50">
             <img src="/daytrace-logo.png" alt="DayTrace Logo" className="w-full h-full object-cover" />
@@ -82,7 +82,7 @@ export default function MoneyPage() {
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" x2="16.65" y1="21" x2="16.65"></line>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
 
@@ -102,7 +102,7 @@ export default function MoneyPage() {
       </header>
 
       {/* Main Scrollable Money Content (Exact from Money stitch template) */}
-      <main className="relative z-10 px-5 pt-4 space-y-4 max-w-md mx-auto">
+      <main className="relative z-10 px-5 md:px-10 pt-4 space-y-4 max-w-[1200px] mx-auto">
         {/* Month & Live Sync Status Bar with Currency Switcher */}
         <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-3 border border-indigo-100/70 shadow-sm flex items-center justify-between">
           <div 
