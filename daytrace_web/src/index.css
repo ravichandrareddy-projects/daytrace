@@ -1,0 +1,549 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+    min-height: max(884px, 100dvh);
+    background-color: #FAF8FF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+@keyframes rainbow-flow-horizontal {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animated-border-shimmer {
+  background: linear-gradient(
+    90deg,
+    #ff0055 0%,
+    #ff5400 14%,
+    #ffd60a 28%,
+    #06d6a0 42%,
+    #00bbf9 57%,
+    #4361ee 71%,
+    #7209b7 85%,
+    #ff0055 100%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: rainbow-flow-horizontal 3.5s linear infinite !important;
+}
+
+.rainbow-shimmer {
+  background: linear-gradient(
+    90deg,
+    #ff0055 0%,
+    #ff5400 14%,
+    #ffd60a 28%,
+    #06d6a0 42%,
+    #00bbf9 57%,
+    #4361ee 71%,
+    #7209b7 85%,
+    #ff0055 100%
+  );
+  background-size: 200% 100%;
+  animation: rainbow-flow-horizontal 3.5s linear infinite;
+}
+
+
+/* ==========================================================================
+   AURORA BLACK THEME ENGINE (OLED Black + Northern Lights Shimmer Borders)
+   ========================================================================== */
+
+@keyframes aurora-flow-horizontal {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animated-aurora-border {
+  background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6, #ec4899, #10b981) !important;
+  background-size: 200% 100% !important;
+  animation: aurora-flow-horizontal 4s linear infinite !important;
+}
+
+.aurora-border-glow {
+  position: relative;
+}
+.aurora-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6, #ec4899, #10b981);
+  background-size: 200% 100%;
+  animation: aurora-flow-horizontal 4s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+
+.flowing-rainbow-aura {
+  background: linear-gradient(
+    90deg,
+    #ff0055 0%,
+    #ff5400 14%,
+    #ffd60a 28%,
+    #06d6a0 42%,
+    #00bbf9 57%,
+    #4361ee 71%,
+    #7209b7 85%,
+    #ff0055 100%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: rainbow-flow-horizontal 4s linear infinite !important;
+}
+
+.flowing-aurora-aura {
+  background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6, #ec4899, #10b981) !important;
+  background-size: 200% 100% !important;
+  animation: aurora-flow-horizontal 4.5s linear infinite !important;
+}
+
+
+/* Aurora Mode Global Overrides */
+
+html.theme-aurora,
+[data-theme="aurora"],
+.theme-aurora {
+  background-color: #06080F !important;
+  color: #F8FAFC !important;
+}
+
+html.theme-aurora body,
+[data-theme="aurora"] body {
+  background-color: #06080F !important;
+  color: #F8FAFC !important;
+}
+
+/* Surface and Cards in Aurora Black Theme */
+.theme-aurora .bg-white,
+.theme-aurora .bg-white\/80,
+.theme-aurora .bg-white\/85,
+.theme-aurora .bg-white\/90,
+.theme-aurora .bg-white\/95,
+.theme-aurora .bg-white\/70,
+.theme-aurora .bg-white\/75,
+.theme-aurora .bg-surface,
+.theme-aurora .bg-surface\/85,
+.theme-aurora .bg-surface-container-lowest {
+  background-color: rgba(11, 15, 26, 0.90) !important;
+  backdrop-filter: blur(20px) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 14px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Secondary Containers / Input Backgrounds / Sub-metrics */
+.theme-aurora .bg-slate-50,
+.theme-aurora .bg-slate-50\/80,
+.theme-aurora .bg-slate-100,
+.theme-aurora .bg-surface-container,
+.theme-aurora .bg-surface-container-high,
+.theme-aurora .bg-surface-container-low {
+  background-color: rgba(18, 24, 40, 0.85) !important;
+  border-color: rgba(16, 185, 129, 0.28) !important;
+}
+
+/* Aurora Mode Gradient Card Overrides */
+.theme-aurora .bg-gradient-to-br.from-white,
+.theme-aurora .bg-gradient-to-tr.from-white {
+  background: linear-gradient(135deg, rgba(11, 15, 26, 0.95), rgba(18, 24, 40, 0.90)) !important;
+  border-color: rgba(16, 185, 129, 0.45) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6), 0 0 16px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Aurora Border Radiance for all borders */
+.theme-aurora .border-slate-200,
+.theme-aurora .border-slate-200\/40,
+.theme-aurora .border-slate-200\/50,
+.theme-aurora .border-slate-200\/60,
+.theme-aurora .border-slate-200\/70,
+.theme-aurora .border-slate-200\/80,
+.theme-aurora .border-slate-200\/90,
+.theme-aurora .border-slate-100,
+.theme-aurora .border-slate-300,
+.theme-aurora .border-indigo-100,
+.theme-aurora .border-indigo-200,
+.theme-aurora .border-indigo-200\/80 {
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+/* Header & Bottom Navigation in Aurora Black */
+.theme-aurora header,
+.theme-aurora nav {
+  background-color: rgba(8, 12, 22, 0.92) !important;
+  border-color: rgba(16, 185, 129, 0.30) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Text Hierarchy in Aurora Mode */
+.theme-aurora .text-slate-900,
+.theme-aurora .text-slate-800,
+.theme-aurora .text-on-surface {
+  color: #F8FAFC !important;
+}
+
+.theme-aurora .text-slate-700,
+.theme-aurora .text-slate-600 {
+  color: #CBD5E1 !important;
+}
+
+.theme-aurora .text-slate-500,
+.theme-aurora .text-on-surface-variant {
+  color: #94A3B8 !important;
+}
+
+.theme-aurora .text-slate-400 {
+  color: #64748B !important;
+}
+
+.theme-aurora .text-indigo-600,
+.theme-aurora .text-primary {
+  color: #38BDF8 !important;
+}
+
+.theme-aurora .text-purple-700 {
+  color: #C084FC !important;
+}
+
+.theme-aurora .text-emerald-600 {
+  color: #34D399 !important;
+}
+
+/* Forms & Inputs in Aurora Mode */
+.theme-aurora input,
+.theme-aurora select,
+.theme-aurora textarea {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  color: #F8FAFC !important;
+  border-color: rgba(16, 185, 129, 0.45) !important;
+}
+
+.theme-aurora input::placeholder,
+.theme-aurora textarea::placeholder {
+  color: #64748B !important;
+}
+
+/* Modals in Aurora Mode */
+.theme-aurora .rounded-2xl.bg-white,
+.theme-aurora .rounded-3xl.bg-white {
+  background-color: #0B0F1A !important;
+  border: 1px solid rgba(16, 185, 129, 0.45) !important;
+  box-shadow: 0 0 35px rgba(16, 185, 129, 0.20), 0 20px 40px rgba(0, 0, 0, 0.8) !important;
+}
+
+.theme-aurora pre,
+.theme-aurora code {
+  color: #34D399 !important;
+}
+
+/* ==========================================================================
+   PLAIN BLACK THEME ENGINE (Pure OLED Black // Minimalist Dark UI)
+   ========================================================================== */
+html.theme-plain-black,
+[data-theme="plain_black"],
+.theme-plain-black {
+  background-color: #000000 !important;
+  color: #F3F4F6 !important;
+}
+
+html.theme-plain-black body,
+[data-theme="plain_black"] body {
+  background-color: #000000 !important;
+  color: #F3F4F6 !important;
+}
+
+/* Surfaces, Cards, and Panels in Plain Black */
+.theme-plain-black .bg-white,
+.theme-plain-black .bg-white\/80,
+.theme-plain-black .bg-white\/85,
+.theme-plain-black .bg-white\/90,
+.theme-plain-black .bg-white\/95,
+.theme-plain-black .bg-white\/70,
+.theme-plain-black .bg-white\/75,
+.theme-plain-black .bg-surface,
+.theme-plain-black .bg-surface\/85,
+.theme-plain-black .bg-surface-container-lowest {
+  background-color: #0D0F14 !important;
+  backdrop-filter: blur(16px) !important;
+  border-color: #212631 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Secondary Containers & Inputs in Plain Black */
+.theme-plain-black .bg-slate-50,
+.theme-plain-black .bg-slate-50\/80,
+.theme-plain-black .bg-slate-100,
+.theme-plain-black .bg-surface-container,
+.theme-plain-black .bg-surface-container-high,
+.theme-plain-black .bg-surface-container-low {
+  background-color: #151922 !important;
+  border-color: #282E3C !important;
+}
+
+/* Gradients transformed into Sleek Dark Surfaces */
+.theme-plain-black .bg-gradient-to-br.from-white,
+.theme-plain-black .bg-gradient-to-tr.from-white {
+  background: #0D0F14 !important;
+  border-color: #212631 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Subtle Clean Borders */
+.theme-plain-black .border-slate-200,
+.theme-plain-black .border-slate-200\/40,
+.theme-plain-black .border-slate-200\/50,
+.theme-plain-black .border-slate-200\/60,
+.theme-plain-black .border-slate-200\/70,
+.theme-plain-black .border-slate-200\/80,
+.theme-plain-black .border-slate-200\/90,
+.theme-plain-black .border-slate-100,
+.theme-plain-black .border-slate-300,
+.theme-plain-black .border-indigo-100,
+.theme-plain-black .border-indigo-200,
+.theme-plain-black .border-indigo-200\/80 {
+  border-color: #212631 !important;
+}
+
+/* Header & Bottom Navigation in Plain Black */
+.theme-plain-black header,
+.theme-plain-black nav {
+  background-color: rgba(6, 7, 10, 0.95) !important;
+  border-color: #1E232D !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.7) !important;
+}
+
+.theme-plain-black .rainbow-shimmer,
+.theme-plain-black .animated-aurora-border,
+.theme-plain-black .aurora-border-glow::before {
+  display: none !important;
+}
+
+/* Typography in Plain Black */
+.theme-plain-black .text-slate-900,
+.theme-plain-black .text-slate-800,
+.theme-plain-black .text-on-surface {
+  color: #FFFFFF !important;
+}
+
+.theme-plain-black .text-slate-700,
+.theme-plain-black .text-slate-600 {
+  color: #D1D5DB !important;
+}
+
+.theme-plain-black .text-slate-500,
+.theme-plain-black .text-on-surface-variant {
+  color: #9CA3AF !important;
+}
+
+.theme-plain-black .text-slate-400 {
+  color: #6B7280 !important;
+}
+
+.theme-plain-black .text-indigo-600,
+.theme-plain-black .text-primary {
+  color: #F3F4F6 !important;
+}
+
+/* Inputs & Modals in Plain Black */
+.theme-plain-black input,
+.theme-plain-black select,
+.theme-plain-black textarea {
+  background-color: #12151D !important;
+  color: #F9FAFB !important;
+  border-color: #2A303F !important;
+}
+
+.theme-plain-black input::placeholder,
+.theme-plain-black textarea::placeholder {
+  color: #6B7280 !important;
+}
+
+.theme-plain-black .rounded-2xl.bg-white,
+.theme-plain-black .rounded-3xl.bg-white {
+  background-color: #0D0F14 !important;
+  border: 1px solid #282E3C !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ==========================================================================
+   PLAIN WHITE THEME ENGINE (Pure Crisp White // Clean Slate Minimalist UI)
+   ========================================================================== */
+html.theme-plain-white,
+[data-theme="plain_white"],
+.theme-plain-white {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+html.theme-plain-white body,
+[data-theme="plain_white"] body {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+/* Surfaces, Cards, and Panels in Plain White */
+.theme-plain-white .bg-white,
+.theme-plain-white .bg-white\/80,
+.theme-plain-white .bg-white\/85,
+.theme-plain-white .bg-white\/90,
+.theme-plain-white .bg-white\/95,
+.theme-plain-white .bg-white\/70,
+.theme-plain-white .bg-white\/75,
+.theme-plain-white .bg-surface,
+.theme-plain-white .bg-surface\/85,
+.theme-plain-white .bg-surface-container-lowest {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Secondary Containers & Inputs in Plain White */
+.theme-plain-white .bg-slate-50,
+.theme-plain-white .bg-slate-50\/80,
+.theme-plain-white .bg-slate-100,
+.theme-plain-white .bg-surface-container,
+.theme-plain-white .bg-surface-container-high,
+.theme-plain-white .bg-surface-container-low {
+  background-color: #F1F5F9 !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Clean Cards without Gradients */
+.theme-plain-white .bg-gradient-to-br.from-white,
+.theme-plain-white .bg-gradient-to-tr.from-white {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Minimal Crisp Light Borders */
+.theme-plain-white .border-slate-200,
+.theme-plain-white .border-slate-200\/40,
+.theme-plain-white .border-slate-200\/50,
+.theme-plain-white .border-slate-200\/60,
+.theme-plain-white .border-slate-200\/70,
+.theme-plain-white .border-slate-200\/80,
+.theme-plain-white .border-slate-200\/90,
+.theme-plain-white .border-slate-100,
+.theme-plain-white .border-slate-300,
+.theme-plain-white .border-indigo-100,
+.theme-plain-white .border-indigo-200,
+.theme-plain-white .border-indigo-200\/80 {
+  border-color: #E2E8F0 !important;
+}
+
+/* Header & Bottom Navigation in Plain White */
+.theme-plain-white header,
+.theme-plain-white nav {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.theme-plain-white .rainbow-shimmer,
+.theme-plain-white .animated-aurora-border,
+.theme-plain-white .aurora-border-glow::before {
+  display: none !important;
+}
+
+/* Typography in Plain White */
+.theme-plain-white .text-slate-900,
+.theme-plain-white .text-slate-800,
+.theme-plain-white .text-on-surface {
+  color: #0F172A !important;
+}
+
+.theme-plain-white .text-slate-700,
+.theme-plain-white .text-slate-600 {
+  color: #334155 !important;
+}
+
+.theme-plain-white .text-slate-500,
+.theme-plain-white .text-on-surface-variant {
+  color: #64748B !important;
+}
+
+.theme-plain-white .text-slate-400 {
+  color: #94A3B8 !important;
+}
+
+.theme-plain-white .text-indigo-600,
+.theme-plain-white .text-primary {
+  color: #0F172A !important;
+}
+
+/* Inputs & Modals in Plain White */
+.theme-plain-white input,
+.theme-plain-white select,
+.theme-plain-white textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+}
+
+.theme-plain-white input::placeholder,
+.theme-plain-white textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+.theme-plain-white .rounded-2xl.bg-white,
+.theme-plain-white .rounded-3xl.bg-white {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+

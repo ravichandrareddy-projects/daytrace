@@ -1,0 +1,76 @@
+name: daytrace
+description: "DayTrace — Personal Life Operating System"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: any
+  riverpod_annotation: any
+
+  # Routing
+  go_router: any
+
+  # Database
+  drift: any
+  sqlite3_flutter_libs: any
+  path_provider: any
+
+  # UI / Fonts
+  google_fonts: any
+
+  # Utilities
+  intl: any
+  shared_preferences: any
+
+  # Notifications
+  flutter_local_notifications: any
+
+  # Permissions
+  permission_handler: any
+  path: ^1.9.1
+  sqlite3: ^3.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  # Database codegen
+  drift_dev: any
+  build_runner: any
+
+  # Riverpod codegen
+  riverpod_generator: any
+
+flutter:
+  uses-material-design: true
+
+  shaders:
+    - assets/shaders/spectral_border.frag
+    - assets/shaders/aurora_night.frag
+    - assets/shaders/aurora_light.frag
+
+  fonts:
+    - family: PlusJakartaSans
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/PlusJakartaSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/PlusJakartaSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/PlusJakartaSans-ExtraBold.ttf
+          weight: 800
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono-Medium.ttf
+          weight: 500

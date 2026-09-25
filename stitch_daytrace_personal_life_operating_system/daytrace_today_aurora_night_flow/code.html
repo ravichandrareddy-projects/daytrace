@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#c0c1ff',
+        'primary-container': '#6366f1',
+        secondary: '#00f5a6',
+        'secondary-container': '#054e38',
+        tertiary: '#0dd1e0',
+        'tertiary-container': '#004e5c',
+        background: '#0b0e14',
+        surface: '#0b0e14',
+        'surface-container': '#121620',
+        'surface-container-high': '#1a202c',
+        'surface-container-low': '#0e121a',
+        'on-surface': '#f1f5f9',
+        'on-surface-variant': '#94a3b8',
+        'outline-variant': '#2d3748',
+        error: '#ffb4ab',
+        'error-container': '#93000a',
+        'on-error-container': '#ffdad6'
+      },
+      borderRadius: {
+        DEFAULT: '0.25rem',
+        lg: '0.5rem',
+        xl: '0.75rem',
+        '2xl': '1rem',
+        full: '9999px'
+      },
+      spacing: {
+        'space-xl': '1.5rem',
+        'space-lg': '1rem',
+        'space-md': '0.75rem',
+        'space-sm': '0.5rem',
+        'space-xs': '0.25rem',
+        'margin-mobile': '1rem',
+        'gutter-mobile': '1rem'
+      },
+      fontFamily: {
+        'display-lg-mobile': ['Plus Jakarta Sans'],
+        'headline-xl': ['Plus Jakarta Sans'],
+        'headline-lg': ['Plus Jakarta Sans'],
+        'headline-md': ['Plus Jakarta Sans'],
+        'body-lg': ['Plus Jakarta Sans'],
+        'body-md': ['Plus Jakarta Sans'],
+        'body-sm': ['Plus Jakarta Sans'],
+        'label-lg': ['Plus Jakarta Sans'],
+        'label-md': ['Plus Jakarta Sans'],
+        'label-sm': ['Plus Jakarta Sans']
+      },
+      fontSize: {
+        'display-lg-mobile': ['30px', { lineHeight: '38px', letterSpacing: '-0.02em', fontWeight: '800' }],
+        'headline-xl': ['26px', { lineHeight: '32px', letterSpacing: '-0.015em', fontWeight: '700' }],
+        'headline-lg': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'headline-md': ['18px', { lineHeight: '24px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '0em', fontWeight: '400' }],
+        'body-md': ['13px', { lineHeight: '18px', letterSpacing: '0.005em', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.01em', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.005em', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '600' }]
+      }
+    }
+  }
+};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    @keyframes aurora-border-shift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .animated-border-shimmer {
+      background: linear-gradient(90deg, #00f5a6, #0dd1e0, #6366f1, #b838d9, #00f5a6);
+      background-size: 300% 300%;
+      animation: aurora-border-shift 5s ease infinite;
+    }
+  </style>
+</head><body class="bg-[#0B0E14] font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary/20 relative min-h-screen">
+<!-- STITCH_SHADER_START:ANIMATION_53 class="fixed inset-0 w-full h-full pointer-events-none z-0" -->
+<div class="fixed inset-0 w-full h-full pointer-events-none z-0" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_53" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_53');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+// Simplex-style 2D noise for organic fluid aurora ribbons
+vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+float snoise(vec2 v) {
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+  vec2 i  = floor(v + dot(v, C.yy) );
+  vec2 x0 = v -   i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz;
+  x12.xy -= i1;
+  i = mod289(i);
+  vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
+  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+  m = m*m; m = m*m;
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+  vec3 g;
+  g.x  = a0.x  * x0.x  + h.x  * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+
+// Distance to rounded rectangle boundary
+float roundedBoxSDF(vec2 p, vec2 b, float r) {
+    vec2 q = abs(p) - b + vec2(r);
+    return min(max(q.x, q.y), 0.0) + length(max(q, 0.0)) - r;
+}
+
+// Aurora Borealis Night Spectral Palette: Emerald cyan -> Electric emerald -> Mystic teal -> Indigo violet -> Deep magenta / purple
+vec3 auroraPalette(float t) {
+    vec3 cEmerald = vec3(0.0, 0.96, 0.65);     // 00F5A6 vibrant polar green
+    vec3 cTeal    = vec3(0.05, 0.82, 0.88);    // 0DD1E0 glacial cyan
+    vec3 cIndigo  = vec3(0.38, 0.38, 0.96);    // 6161F5 deep polar violet
+    vec3 cMagenta = vec3(0.72, 0.22, 0.85);    // B838D9 nocturnal magenta
+    vec3 cDeepBlue= vec3(0.08, 0.18, 0.45);    // deep midnight undertone
+    
+    float p = fract(t);
+    if (p < 0.25) {
+        return mix(cEmerald, cTeal, p / 0.25);
+    } else if (p < 0.50) {
+        return mix(cTeal, cIndigo, (p - 0.25) / 0.25);
+    } else if (p < 0.75) {
+        return mix(cIndigo, cMagenta, (p - 0.50) / 0.25);
+    } else {
+        return mix(cMagenta, cEmerald, (p - 0.75) / 0.25);
+    }
+}
+
+void main() {
+    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+    uv.y = 1.0 - uv.y; // Correct top-down screen orientation
+
+    float aspect = u_resolution.x / u_resolution.y;
+    vec2 p = uv - 0.5;
+    p.x *= aspect;
+
+    vec2 halfSize = vec2(0.5 * aspect, 0.5);
+
+    // OLED nocturnal pitch-dark night sky base (#0B0E14)
+    vec3 baseNight = vec3(0.043, 0.055, 0.078);
+
+    // Perimeter boundary distance
+    float cornerRadius = 0.08 * aspect;
+    float d = roundedBoxSDF(p, halfSize - vec2(0.005 * aspect, 0.005), cornerRadius);
+    float distFromEdge = max(-d, 0.0);
+
+    // Continuous left-to-right & edge wave coordinate
+    float flowSpeed = 0.20;
+    float t = u_time * flowSpeed;
+
+    // Organic wavy ribbon distortion along the edges
+    float noiseCurtain = snoise(vec2(uv.x * 3.2 - t * 0.8, uv.y * 2.5 + t * 0.4)) * 0.06;
+    float flowCoord = fract(uv.x * 0.80 - uv.y * 0.18 - t + noiseCurtain);
+
+    // Pure Aurora Night color spectrum
+    vec3 auroraCol = auroraPalette(flowCoord);
+
+    // Glow profile: hugging the outer perimeter and blooming around the bottom & bottom corners
+    float edgeGlow = smoothstep(0.19, 0.002, distFromEdge + noiseCurtain * 0.5);
+
+    // Enhanced concentration on bottom border and bottom-left / bottom-right corners (same structure as Screen 7)
+    float bottomConcentration = smoothstep(0.40, 0.98, uv.y) * 1.5;
+    float topConcentration = smoothstep(0.12, 0.0, uv.y) * 0.6;
+    float sideConcentration = (smoothstep(0.12, 0.0, uv.x) + smoothstep(0.88, 1.0, uv.x)) * 0.9;
+
+    float totalEdgeWeight = edgeGlow * (0.85 + bottomConcentration + sideConcentration + topConcentration);
+
+    // Very subtle atmospheric midnight veil drifting across lower center
+    float ambientAuroraVeil = smoothstep(0.45, 0.0, length(uv - vec2(0.5, 0.82))) * 0.22;
+
+    // Luminous intensity on dark background (vivid aurora glow)
+    float finalAlpha = clamp(totalEdgeWeight * 0.85 + ambientAuroraVeil, 0.0, 0.95);
+
+    // Starry or luminous soft tint mixing
+    vec3 finalColor = mix(baseNight, auroraCol, finalAlpha);
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_53 -->
+<!-- Ambient Glowing Aurora Night Perimeter Border & Corner Shimmer Overlay -->
+<div class="fixed inset-0 pointer-events-none z-30" style="box-shadow: inset 0 0 28px rgba(0, 245, 166, 0.08), inset 0 -3px 16px rgba(13, 209, 224, 0.22);"></div>
+<div class="fixed bottom-0 left-0 right-0 h-[2.5px] animated-border-shimmer pointer-events-none z-30 opacity-80"></div>
+<div class="fixed bottom-0 left-0 w-32 h-32 pointer-events-none z-20 bg-gradient-to-tr from-emerald-400/20 via-teal-500/10 to-transparent blur-2xl"></div>
+<div class="fixed bottom-0 right-0 w-32 h-32 pointer-events-none z-20 bg-gradient-to-tl from-purple-500/20 via-indigo-400/10 to-transparent blur-2xl"></div>
+<!-- Top Fixed Header -->
+<header class="fixed top-0 w-full z-50 bg-[#0B0E14]/75 backdrop-blur-xl pt-safe border-b border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+<div class="h-16 px-gutter-mobile flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<img alt="Brand logo" class="h-8 w-auto object-contain rounded-lg shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1VuMpKGGl1hriS6r-C4d_B5O46UgjTJMOkWw4Jte-01bGV4LTfE7unwUVuyR5c-mPDM5uyJ7nUtYjBkzyjBQNGgFznXo7XDtHkXLFUzGKi0LZT4L2Ghuu0ElHtxP5KvIWQS31NiG1mbzLeN6PpwG0XJcrR1wA-SEylHEorfcTGnvzOnTV_UPfYzf4Os2_fwEjNVo-MkEDxT65vUKOgbJwFFmCojyZ9sKA-WNu42UQunkE887qOvjo5uzJ8"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md tracking-tight text-white font-bold leading-none">DayTrace</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_#00f5a6]"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-none mt-0.5">Today</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Search" class="w-10 h-10 flex items-center justify-center rounded-full text-slate-300 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">search</span>
+</button>
+<div class="relative flex items-center justify-center pl-space-xs">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-white/20 shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1XqQ4EeHuc_sR_d8jhPWT3e3YlXyZIxrWeCHzsj8tTBHB1xFTMpUaYhtaahtCI6Ohr9c-96RnEtxjZExBavAjiyli_MJOcKRQ78jZiArIaB1uLwR6e54lbQouYaA4ZqgIoOA96FXWjQZS65IN8LSWdBu7K4G05NV0jGthWX6j6h3m9bfpJG60nZa2rzjhCeGzOnt8ZyKxN-0nr586QxO5gNTb0BDleYxgXNh2iBM01o6ulFPOGXUZ2Q4FA"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-[#0B0E14] shadow-[0_0_6px_#00f5a6]"></span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-col relative w-full pt-16 pb-20 z-10 min-h-screen">
+<div class="flex flex-col w-full px-margin-mobile pb-space-xl space-y-space-lg">
+<!-- Top Context Bar & Greeting -->
+<div class="flex flex-col space-y-space-xs pt-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider font-semibold">Mon, Sep 21, 2026 · 08:42 AM</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<!-- Weather Tag -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-900/70 backdrop-blur-xl border border-white/10 text-slate-300 font-label-sm text-label-sm shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+<span class="material-symbols-outlined text-[14px] text-amber-400">wb_sunny</span>
+            26°C · Clear
+          </span>
+<!-- Aurora Flow Tag -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/60 backdrop-blur-xl text-emerald-300 font-label-sm text-label-sm border border-emerald-500/30 shadow-[0_0_12px_rgba(0,245,166,0.2)]">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#00f5a6]"></span>
+            ✨ Aurora Flow
+          </span>
+</div>
+</div>
+<!-- Bold Greeting -->
+<div class="pt-space-xs">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-white font-extrabold tracking-tight drop-shadow-sm">
+          Good morning, Arjun
+        </h1>
+<p class="font-body-md text-body-md text-slate-300 mt-0.5 font-medium">
+          Target day rhythm is 68% calibrated. Focus high early.
+        </p>
+</div>
+</div>
+<!-- 4-Metric Overview Grid (Editorial Style, Dark Frosted Glass) -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Card 1: Planned Target -->
+<div class="flex flex-col p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:border-white/20 transition-all">
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Planned</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400">timer</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-white">7h 30m</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 mt-1">Target workload</span>
+</div>
+<!-- Card 2: Recorded Realtime -->
+<div class="flex flex-col p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:border-emerald-500/30 transition-all relative overflow-hidden">
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Recorded</span>
+<span class="inline-flex items-center text-emerald-300 font-label-sm text-label-sm font-bold bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded-full shadow-[0_0_8px_rgba(0,245,166,0.15)]">30%</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-emerald-400">2h 14m</span>
+</div>
+<!-- Mini Linear Tracker in Electric Aurora Gradient -->
+<div class="w-full bg-slate-800/80 h-1.5 rounded-full mt-2 overflow-hidden border border-white/5">
+<div class="bg-gradient-to-r from-emerald-400 to-teal-400 h-full rounded-full shadow-[0_0_8px_#00f5a6]" style="width: 30%"></div>
+</div>
+</div>
+<!-- Card 3: Tasks Done -->
+<div class="flex flex-col p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:border-white/20 transition-all">
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Done</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">task_alt</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-white">3 <span class="text-slate-400 font-headline-md text-headline-md font-normal">/ 7</span></span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 mt-1">4 pending milestones</span>
+</div>
+<!-- Card 4: Day Burn -->
+<div class="flex flex-col p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:border-white/20 transition-all">
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Spent</span>
+<span class="material-symbols-outlined text-[18px] text-amber-400">payments</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-white">₹240</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 mt-1">Breakfast &amp; Transit</span>
+</div>
+</div>
+<!-- Live Current Activity Card (NOW // LIVE FOCUS - Aurora Glow Hero) -->
+<div class="relative rounded-2xl bg-[#121620]/85 backdrop-blur-xl border border-white/15 p-space-lg shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden">
+<!-- Vibrant Aurora top accent stripe -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-teal-400 via-indigo-500 to-purple-500"></div>
+<div class="flex flex-col space-y-space-md">
+<!-- Session Badge + Pulse -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-indigo-950/70 border border-indigo-500/30">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary shadow-[0_0_6px_#00f5a6]"></span>
+</span>
+<span class="font-label-sm text-label-sm font-bold text-indigo-300 tracking-wide">LIVE FOCUS · DEV · 09:00 - 10:30 AM</span>
+</div>
+<span class="font-label-sm text-label-sm text-emerald-400 font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-emerald-400">local_fire_department</span>
+            Streak #14
+          </span>
+</div>
+<!-- Activity Title & Details -->
+<div>
+<h2 class="font-headline-xl text-headline-xl font-bold text-white tracking-tight">Python Practice</h2>
+<p class="font-body-md text-body-md text-slate-300 mt-0.5">
+            LeetCode Trees &amp; Graph Traversals (BFS, DFS, Dijkstra)
+          </p>
+</div>
+<!-- Progress Meter -->
+<div class="bg-black/30 backdrop-blur-md p-space-md rounded-xl space-y-2 border border-white/10">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md font-semibold text-white flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-teal-400">schedule</span>
+              42m elapsed
+            </span>
+<span class="font-label-md text-label-md font-semibold text-slate-400">48m left</span>
+</div>
+<div class="w-full h-2.5 bg-slate-800/80 rounded-full overflow-hidden flex border border-white/5">
+<div class="bg-gradient-to-r from-emerald-400 via-teal-400 to-indigo-500 h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(0,245,166,0.5)]" style="width: 46.6%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-slate-400 pt-0.5">
+<span>09:00 AM</span>
+<span class="font-semibold text-emerald-300">46% complete</span>
+<span>10:30 AM</span>
+</div>
+</div>
+<!-- Tactile Action Controls -->
+<div class="grid grid-cols-4 gap-space-xs pt-1">
+<button class="flex flex-col items-center justify-center py-2.5 rounded-xl bg-red-950/60 border border-red-500/30 text-red-300 hover:bg-red-900/70 active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">stop</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-semibold">Stop</span>
+</button>
+<button class="flex flex-col items-center justify-center py-2.5 rounded-xl bg-slate-800/60 backdrop-blur-md border border-white/10 text-slate-200 hover:bg-slate-800 hover:text-white active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-semibold">Edit</span>
+</button>
+<button class="flex flex-col items-center justify-center py-2.5 rounded-xl bg-slate-800/60 backdrop-blur-md border border-white/10 text-slate-200 hover:bg-slate-800 hover:text-white active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">notes</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-semibold">Note</span>
+</button>
+<button class="flex flex-col items-center justify-center py-2.5 rounded-xl bg-slate-800/60 backdrop-blur-md border border-white/10 text-slate-200 hover:bg-slate-800 hover:text-white active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-semibold">Voice</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tomorrow's Planning Cutoff Banner -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-indigo-900/60 border border-indigo-500/30 text-indigo-300 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(99,102,241,0.25)]">
+<span class="material-symbols-outlined text-[22px]">event_upcoming</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-white">Tomorrow's Planning Cutoff</span>
+<span class="font-body-sm text-body-sm text-slate-400">Closes tonight at 11:30 PM</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-white/15 text-emerald-300 font-label-md text-label-md font-bold shadow-sm hover:bg-slate-700/80 active:scale-95 transition-all" type="button">
+        Review
+      </button>
+</div>
+<!-- Today's Schedule (8 Blocks) -->
+<div class="flex flex-col space-y-space-md">
+<!-- Schedule Section Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md font-bold text-white">Today's Schedule</h2>
+<span class="px-2 py-0.5 rounded-full bg-slate-800/70 border border-white/10 text-slate-300 font-label-sm text-label-sm font-bold shadow-sm">8 Blocks</span>
+</div>
+<button class="font-label-md text-label-md font-semibold text-teal-300 hover:text-teal-200 transition-colors flex items-center gap-0.5" type="button">
+          Timeline View
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Chronological List of Blocks -->
+<div class="space-y-space-xs">
+<!-- Block 1: Completed Habit -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#121620]/60 backdrop-blur-xl border border-white/5 shadow-sm opacity-75 hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-slate-400">08:00 AM</span>
+<span class="px-1.5 py-0.2 rounded bg-slate-800/60 border border-white/5 text-slate-300 font-label-sm text-label-sm">Habit</span>
+</div>
+<span class="font-body-md text-body-md text-slate-400 line-through truncate">Wake up &amp; Morning Sunlight</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 shrink-0 ml-2">20m</span>
+</div>
+<!-- Block 2: Completed Nutrition -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#121620]/60 backdrop-blur-xl border border-white/5 shadow-sm opacity-75 hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-slate-400">08:30 AM</span>
+<span class="px-1.5 py-0.2 rounded bg-slate-800/60 border border-white/5 text-slate-300 font-label-sm text-label-sm">Nutrition</span>
+</div>
+<span class="font-body-md text-body-md text-slate-400 line-through truncate">Breakfast &amp; Electrolytes</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 shrink-0 ml-2">30m</span>
+</div>
+<!-- Block 3: ACTIVE FOCUS (Python Practice) -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#151c28]/90 backdrop-blur-xl border border-emerald-500/30 shadow-[0_0_20px_rgba(0,245,166,0.15)] relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-emerald-400 to-teal-400"></div>
+<div class="flex items-center gap-space-sm min-w-0 pl-1">
+<div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(0,245,166,0.3)]">
+<span class="material-symbols-outlined text-[18px] animate-pulse">adjust</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm font-bold text-emerald-300">09:00 - 10:30 AM</span>
+<span class="px-1.5 py-0.2 rounded bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 font-label-sm text-label-sm font-bold">Study // Code</span>
+</div>
+<span class="font-body-md text-body-md font-bold text-white truncate">Python Practice</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 ml-2">
+<span class="font-label-sm text-label-sm font-bold text-teal-300">48m left</span>
+<span class="font-label-sm text-label-sm text-slate-400">46% done</span>
+</div>
+</div>
+<!-- Block 4: Coffee Break & Mobility -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-sm hover:border-white/20 transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-slate-800/80 text-slate-300 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">coffee</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-slate-400">10:30 - 11:00 AM</span>
+<span class="px-1.5 py-0.2 rounded bg-slate-800/60 border border-white/5 text-slate-300 font-label-sm text-label-sm">Rest</span>
+</div>
+<span class="font-body-md text-body-md font-semibold text-slate-100 truncate">Coffee Break &amp; Mobility</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 shrink-0 ml-2">30m</span>
+</div>
+<!-- Block 5: SQL Deep Dive -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-sm hover:border-white/20 transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-slate-800/80 text-teal-300 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-slate-400">11:00 AM - 12:00 PM</span>
+<span class="px-1.5 py-0.2 rounded bg-teal-950/60 border border-teal-500/30 text-teal-300 font-label-sm text-label-sm">Deep Work</span>
+</div>
+<span class="font-body-md text-body-md font-semibold text-slate-100 truncate">SQL Deep Dive</span>
+<span class="font-body-sm text-body-sm text-slate-400 truncate">Indexing mechanisms &amp; query plans</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 shrink-0 ml-2">60m</span>
+</div>
+<!-- Block 6: Lunch & Walk Outside -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-sm hover:border-white/20 transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-slate-800/80 text-emerald-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">park</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-slate-400">12:00 - 01:00 PM</span>
+<span class="px-1.5 py-0.2 rounded bg-slate-800/60 border border-white/5 text-slate-300 font-label-sm text-label-sm">Personal</span>
+</div>
+<span class="font-body-md text-body-md font-semibold text-slate-100 truncate">Lunch &amp; Walk Outside</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 shrink-0 ml-2">60m</span>
+</div>
+<!-- Block 7: Core Service Refactor -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-sm hover:border-white/20 transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-slate-800/80 text-indigo-300 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">code_blocks</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-slate-400">02:00 - 04:00 PM</span>
+<span class="px-1.5 py-0.2 rounded bg-indigo-950/60 border border-indigo-500/30 text-indigo-300 font-label-sm text-label-sm">Work</span>
+</div>
+<span class="font-body-md text-body-md font-semibold text-slate-100 truncate">DayTrace Core Service Refactor</span>
+<span class="font-body-sm text-body-sm text-slate-400 truncate">Telemetry dispatch layer &amp; queue batching</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 shrink-0 ml-2">120m</span>
+</div>
+<!-- Block 8: Job Preparation & System Design -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-[#121620]/75 backdrop-blur-xl border border-white/10 shadow-sm hover:border-white/20 transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-7 h-7 rounded-full bg-slate-800/80 text-purple-300 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">architecture</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-slate-400">06:30 - 08:00 PM</span>
+<span class="px-1.5 py-0.2 rounded bg-purple-950/60 border border-purple-500/30 text-purple-300 font-label-sm text-label-sm">Prep</span>
+</div>
+<span class="font-body-md text-body-md font-semibold text-slate-100 truncate">Job Preparation &amp; System Design</span>
+<span class="font-body-sm text-body-sm text-slate-400 truncate">Distributed rate limiters (Token Bucket)</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 shrink-0 ml-2">90m</span>
+</div>
+</div>
+</div>
+<!-- Bottom Floating Action Button (Luminous Aurora Indigo/Emerald Gradient) -->
+<div class="fixed right-5 bottom-20 z-40">
+<button aria-label="Add block or task" class="w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-400 via-teal-500 to-indigo-600 text-white shadow-[0_4px_24px_rgba(0,245,166,0.35)] flex items-center justify-center hover:scale-105 active:scale-95 transition-all focus:outline-none border border-white/25" type="button">
+<span class="material-symbols-outlined text-[30px]">add</span>
+</button>
+</div>
+</div>
+<script>
+    // Micro-interaction for tactile feedback on schedule item tap
+    document.querySelectorAll('.space-y-space-xs > div').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.add('scale-[0.99]');
+        setTimeout(() => {
+          card.classList.remove('scale-[0.99]');
+        }, 150);
+      });
+    });
+  </script>
+</main>
+<!-- Bottom Frosted Dark Glass Navigation -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#0B0E14]/80 backdrop-blur-xl border-t border-white/[0.08] shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex justify-around items-center h-16 px-space-xs">
+<a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 transition-colors text-emerald-400 font-label-md [&amp;_span.material-symbols-outlined]:[font-variation-settings:'FILL'_1,'wght'_700]" data-path="today" href="#">
+<span class="material-symbols-outlined text-[24px]">wb_sunny</span>
+<span class="font-label-sm text-label-sm">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-slate-400 hover:text-slate-200 transition-colors" data-path="timeline" href="#">
+<span class="material-symbols-outlined text-[24px]">schedule</span>
+<span class="font-label-sm text-label-sm">Timeline</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-slate-400 hover:text-slate-200 transition-colors" data-path="money" href="#">
+<span class="material-symbols-outlined text-[24px]">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Money</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-slate-400 hover:text-slate-200 transition-colors" data-path="memory" href="#">
+<span class="material-symbols-outlined text-[24px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm">Memory</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-slate-400 hover:text-slate-200 transition-colors" data-path="more" href="#">
+<span class="material-symbols-outlined text-[24px]">grid_view</span>
+<span class="font-label-sm text-label-sm">More</span>
+</a>
+</div>
+</nav>
+</body></html>
